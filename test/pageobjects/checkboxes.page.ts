@@ -16,12 +16,6 @@ class CheckboxesPage extends Page {
         return $('//input[@type="checkbox"][2]');
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    public open () {
-        return super.open();
-    }
 }
 
 export default new CheckboxesPage();

@@ -15,13 +15,6 @@ class HomePage extends Page {
     public async openNthLink(n: number){
         await this.getListElement(n).click();
     }
-    
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    public open () {
-        return super.open();
-    }
 }
 
 export default new HomePage();

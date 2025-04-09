@@ -25,11 +25,18 @@ class AddRemovePage extends Page {
         }
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
+     /**
+     * Remove n elements
      */
-    public open () {
-        return super.open();
+     public async removeElements(n: number): Promise<boolean>{
+        try {
+            for (let i = 0; i < n; i++) {
+                await this.getDeleteButton(n).click()
+            }
+        } catch (error) {
+            return false
+        }
+        return true
     }
 }
 
