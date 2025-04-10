@@ -1,4 +1,5 @@
 import Page from './page.ts';
+import allureReporter from '@wdio/allure-reporter'
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -12,9 +13,10 @@ class BrokenImagesPage extends Page {
     }
 
      /**
-     * Login with valid credentials
+     * Checks how many broken images there are at a page
      */
      public async checkBrokenImages(): Promise<number>{
+        allureReporter.addStep('Check number of broken images')
         let broken_images: number = 0;
         const imagesArr: ChainablePromiseArray = await this.images;
         for (const image of imagesArr) {
@@ -30,7 +32,6 @@ class BrokenImagesPage extends Page {
                 broken_images++;
                 console.error(`Broken image found: ${src}`);
             }
-            
         }
         return broken_images
     }

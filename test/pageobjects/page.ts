@@ -1,4 +1,5 @@
 import { browser } from '@wdio/globals'
+import allureReporter from '@wdio/allure-reporter'
 
 /**
 * main page object containing all methods, selectors and functionality
@@ -10,6 +11,7 @@ export default class Page {
     * @param path = path of the sub page (e.g. /path/to/page.html) --> automation-practice-form
     */
     public open () {
+        allureReporter.addStep('Open home')
         return browser.url(`https://the-internet.herokuapp.com/`)
     }
 }

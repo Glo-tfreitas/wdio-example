@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import Page from './page.ts';
+import allureReporter from '@wdio/allure-reporter'
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -13,6 +14,7 @@ class HomePage extends Page {
     }
 
     public async openNthLink(n: number){
+        allureReporter.addStep('Opened link')
         await this.getListElement(n).click();
     }
 }

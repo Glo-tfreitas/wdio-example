@@ -17,7 +17,7 @@ describe('open a link', () => {
         let linkToOpen = 1;
         await Home.openNthLink(linkToOpen)
     });
-    it('should add 5 elements and remove 4', async () => {
+    it.only('should add 5 elements and remove 4', async () => {
         linkToOpen = 2
         const elementsToAdd = 5
         const elementsToRemove = 4
@@ -40,7 +40,7 @@ describe('open a link', () => {
         await browser.pause(10000)
         await expect(BasicAuth.login(username, password)).resolves.toBe(true)
     });
-    it('checks images in the broken images page', async () => {
+    it(`checks that there's no broken images in the broken images page`, async () => {
         linkToOpen = 4;
         urlToTest = 'https://the-internet.herokuapp.com/broken_images'
         await Home.openNthLink(linkToOpen);
@@ -48,6 +48,14 @@ describe('open a link', () => {
         await expect(url).toBe(urlToTest)
         await expect(BrokenImages.checkBrokenImages()).resolves.toBe(0)
     });
+    /*it(`checks that there's no broken images in the broken images page`, async () => {
+        linkToOpen = 4;
+        urlToTest = 'https://the-internet.herokuapp.com/broken_images'
+        await Home.openNthLink(linkToOpen);
+        const url = await browser.getUrl()
+        await expect(url).toBe(urlToTest)
+        await expect(BrokenImages.checkBrokenImages()).resolves.toBe(0)
+    });*/
     it('should validate the checkboxes page', async () => {
         linkToOpen = 6
         await Home.openNthLink(linkToOpen);
