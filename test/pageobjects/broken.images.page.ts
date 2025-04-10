@@ -16,10 +16,10 @@ class BrokenImagesPage extends Page {
      * Checks how many broken images there are at a page
      */
      public async checkBrokenImages(): Promise<number>{
-        allureReporter.addStep('Check number of broken images')
+        allureReporter.addStep('Check how many broken images are there')
         let broken_images: number = 0;
-        const imagesArr: ChainablePromiseArray = await this.images;
-        for (const image of imagesArr) {
+        const imagesArray: ChainablePromiseArray = await this.images;
+        for (const image of imagesArray) {
             const src = await image.getAttribute('src')
     
             // Execute JavaScript to fetch the image URL and get the response status

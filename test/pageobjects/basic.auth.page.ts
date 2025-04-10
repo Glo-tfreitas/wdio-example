@@ -13,9 +13,19 @@ class BasicAuth extends Page {
      */
      public async login(user: string, pass: string): Promise<boolean>{
         allureReporter.addStep('Login user')
+        await browser.waitUntil(async () => {
+            return await browser.isAlertOpen();
+        }, {
+            timeout: 5000, 
+            timeoutMsg: 'La alerta no apareció en el tiempo esperado'
+        });
         try {
-            browser.sendAlertText(user + '\t' + pass)
+            const alertText = await browser.getAlertText()
+            console.log("alertText:" + alertText)
+            await browser.sendAlertText(user + '\t' + pass)
+            await browser.pause(10000)
         } catch (error) {
+            console.log('Traza: ' + error)
             return false
         }
         return true

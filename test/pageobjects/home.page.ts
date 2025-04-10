@@ -9,13 +9,13 @@ class HomePage extends Page {
     /**
      * define selectors using getter methods
      */
-    public getListElement (n: number) {
-        return $(`li:nth-child(${n}) > a`);
+    public getListElement (elementNumber: number) {
+        return $(`li:nth-child(${elementNumber}) > a`);
     }
 
-    public async openNthLink(n: number){
+    public async openNthLink(elementNumber: number){
         allureReporter.addStep('Opened link')
-        await this.getListElement(n).click();
+        await this.getListElement(elementNumber).click();
     }
 }
 

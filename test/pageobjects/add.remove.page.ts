@@ -20,9 +20,9 @@ class AddRemovePage extends Page {
     /**
      * Add n elements
      */
-    public async addElements(n: number){
-        allureReporter.addStep('Add elements button')
-        for (let i = 0; i < n; i++) {
+    public async addElements(elementsToAdd: number){
+        allureReporter.addStep(`Add ${elementsToAdd} elements using the button'`)
+        for (let i = 0; i < elementsToAdd; i++) {
             await this.addButton.click()
         }
     }
@@ -30,10 +30,10 @@ class AddRemovePage extends Page {
      /**
      * Remove n elements
      */
-     public async removeElements(n: number): Promise<boolean>{
-        allureReporter.addStep('Remove elements buttons')
+     public async removeElements(elementsToRemove: number): Promise<boolean>{
+        allureReporter.addStep(`Remove ${elementsToRemove} elements using the buttons`)
         try {
-            for (let i = n; i > 0; i--) {
+            for (let i = elementsToRemove; i > 0; i--) {
                 await this.getDeleteButton(i).click()
             }
         } catch (error) {
