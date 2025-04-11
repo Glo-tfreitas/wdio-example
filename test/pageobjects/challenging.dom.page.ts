@@ -51,7 +51,7 @@ class ChallengingDomPage extends Page {
                 }
             }
         }
-        return 'The image was not found'
+        return 'The text was not found'
         
     }  
 }
