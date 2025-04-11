@@ -49,7 +49,7 @@ describe('HerokuApp tests', () => {
         await expect(url).toBe(urlToTest)
         await expect(BrokenImages.checkBrokenImages()).resolves.toBe(0)
     });
-    it(`should return the column and position of a td element from a tr`, async () => {
+    it(`should return the column and position of an element in a table`, async () => {
         const textToSearch = 'Iuvaret1'
         const columnName = 'Lorem'
         const columnRow = 2
@@ -68,7 +68,7 @@ describe('HerokuApp tests', () => {
         await Home.openNthLink(linkToOpen);
         const url = await browser.getUrl()
         await expect(url).toBe(urlToTest)
-        const button = await ChallengingDom.pressButtonByColor(colorToTest)
+        const button = await ChallengingDom.getButtonByColor(colorToTest)
         await expect(button).toBeClickable()
         button?.click()
     });

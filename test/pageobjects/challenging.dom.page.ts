@@ -38,7 +38,7 @@ class ChallengingDomPage extends Page {
      * Checks the position of the text in the table and returns the name of the column and the position of the row
      */
      public async checkPositionOfTableData(searchText: string): Promise<string>{
-        allureReporter.addStep(`Check's the position of the text ${searchText}, if it doesn't exist it returns a handled error`)
+        allureReporter.addStep(`Checks the position of the text ${searchText}, if it doesn't exist it returns a handled error`)
         const allRows: ChainablePromiseArray = await this.allTableRows;
         const allHeaders = await this.allTableHeaders;
         for (let i = 0; i < allRows.length; i++) {
@@ -54,7 +54,8 @@ class ChallengingDomPage extends Page {
         return 'The text was not found'
     }
 
-    public async pressButtonByColor(color: string){
+    public async getButtonByColor(color: string){
+        allureReporter.addStep(`Checks that the color ${color}, corresponds to a button`)
         switch(color.toLocaleLowerCase()){
             case 'blue':
                 return this.button
