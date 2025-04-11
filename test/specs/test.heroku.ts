@@ -4,7 +4,7 @@ import CheckboxesPage from '../pageobjects/checkboxes.page.ts';
 import AddRemovePage from '../pageobjects/add.remove.page.ts';
 import BasicAuth from '../pageobjects/basic.auth.page.ts';
 import BrokenImages from '../pageobjects/broken.images.page.ts';
-import ChallengingDom from '../pageobjects/broken.images.page.ts';
+import ChallengingDom from '../pageobjects/challenging.dom.page.ts';
 import { browser } from '@wdio/globals'
 
 describe('HerokuApp tests', () => {
@@ -49,13 +49,15 @@ describe('HerokuApp tests', () => {
         await expect(url).toBe(urlToTest)
         await expect(BrokenImages.checkBrokenImages()).resolves.toBe(0)
     });
-    it(`should return the column and `, async () => {
+    it.only(`should return the column and position of a td element from a tr`, async () => {
         linkToOpen = 5;
         urlToTest = 'https://the-internet.herokuapp.com/challenging_dom'
         await Home.openNthLink(linkToOpen);
         const url = await browser.getUrl()
         await expect(url).toBe(urlToTest)
-        await expect(ChallengingDom.checkBrokenImages()).resolves.toBe(0)
+        const columnName = 'Diceret'
+        const columnRow = 1
+        await expect((await ChallengingDom.checkPositionOfTableData('Phaedrum0')).toString()).toBe(`The text was found at row ${columnRow} and column ${columnName}`)
     });
     it('should validate checkboxes', async () => {
         linkToOpen = 6
