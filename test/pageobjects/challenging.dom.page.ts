@@ -15,7 +15,7 @@ class ChallengingDomPage extends Page {
     }
 
     public get buttonAlert () {
-        return $('.button.alert');
+        return $(`.button.alert`);
     }
 
     public get buttonSuccess () {
@@ -35,7 +35,7 @@ class ChallengingDomPage extends Page {
     }
 
      /**
-     * Checks how many broken images there are at a page
+     * Checks the position of the text in the table and returns the name of the column and the position of the row
      */
      public async checkPositionOfTableData(searchText: string): Promise<string>{
         allureReporter.addStep(`Check's the position of the text ${searchText}, if it doesn't exist it returns a handled error`)
@@ -52,8 +52,20 @@ class ChallengingDomPage extends Page {
             }
         }
         return 'The text was not found'
-        
-    }  
+    }
+
+    public async pressButtonByColor(color: string){
+        switch(color.toLocaleLowerCase()){
+            case 'blue':
+                return this.button
+            case 'red':
+                return this.buttonAlert
+            case 'green':
+                return this.buttonSuccess
+            default:
+                return null
+        }
+    }
 }
 
 export default new ChallengingDomPage();

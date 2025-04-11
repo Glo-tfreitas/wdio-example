@@ -49,15 +49,28 @@ describe('HerokuApp tests', () => {
         await expect(url).toBe(urlToTest)
         await expect(BrokenImages.checkBrokenImages()).resolves.toBe(0)
     });
-    it.only(`should return the column and position of a td element from a tr`, async () => {
+    it(`should return the column and position of a td element from a tr`, async () => {
+        const textToSearch = 'Iuvaret1'
+        const columnName = 'Lorem'
+        const columnRow = 2
         linkToOpen = 5;
         urlToTest = 'https://the-internet.herokuapp.com/challenging_dom'
         await Home.openNthLink(linkToOpen);
         const url = await browser.getUrl()
         await expect(url).toBe(urlToTest)
-        const columnName = 'Diceret'
-        const columnRow = 1
-        await expect((await ChallengingDom.checkPositionOfTableData('Phaedrum0')).toString()).toBe(`The text was found at row ${columnRow} and column ${columnName}`)
+        await expect((await ChallengingDom.checkPositionOfTableData(textToSearch)).toString())
+            .toBe(`The text was found at row ${columnRow} and column ${columnName}`)
+    });
+    it.only(`should press the red button`, async () => {
+        linkToOpen = 5;
+        const colorToTest = 'RED'
+        urlToTest = 'https://the-internet.herokuapp.com/challenging_dom'
+        await Home.openNthLink(linkToOpen);
+        const url = await browser.getUrl()
+        await expect(url).toBe(urlToTest)
+        const button = await ChallengingDom.pressButtonByColor(colorToTest)
+        await expect(button).toBeClickable()
+        button?.click()
     });
     it('should validate checkboxes', async () => {
         linkToOpen = 6
