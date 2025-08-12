@@ -1,10 +1,10 @@
 import { expect } from '@wdio/globals'
-import Home from '../pageobjects/home.page.ts'
-import CheckboxesPage from '../pageobjects/checkboxes.page.ts';
-import AddRemovePage from '../pageobjects/add.remove.page.ts';
-import BasicAuth from '../pageobjects/basic.auth.page.ts';
-import BrokenImages from '../pageobjects/broken.images.page.ts';
-import ChallengingDom from '../pageobjects/challenging.dom.page.ts';
+import Home from '../pageobjects/heroku_app/home.page.ts'
+import CheckboxesPage from '../pageobjects/heroku_app/checkboxes.page.ts';
+import AddRemovePage from '../pageobjects/heroku_app/add.remove.page.ts';
+import BasicAuth from '../pageobjects/heroku_app/basic.auth.page.ts';
+import BrokenImages from '../pageobjects/heroku_app/broken.images.page.ts';
+import ChallengingDom from '../pageobjects/heroku_app/challenging.dom.page.ts';
 import { browser } from '@wdio/globals'
 
 describe('HerokuApp tests', () => {
